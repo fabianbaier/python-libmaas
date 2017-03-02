@@ -3,6 +3,7 @@
 __all__ = [
     "connect",
     "ConnectError",
+    "derive_resource_name",
     "fetch_api_description",
     "login",
     "LoginError",
@@ -176,3 +177,14 @@ async def login(url, *, username=None, password=None, insecure=False):
     return Profile(
         name=url.netloc, url=url.geturl(), credentials=credentials,
         description=description)
+
+
+def derive_resource_name(name):
+    """A stable, human-readable name and identifier for a resource."""
+    if name.startswith("Anon"):
+        name = name[4:]
+    if name.endswith("Handler"):
+        name = name[:-7]
+    if name == "Maas":
+        name = "MAAS"
+    return name
