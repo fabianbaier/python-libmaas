@@ -89,7 +89,7 @@ class Machine(Object, metaclass=MachineType):
     architecture = ObjectField.Checked(
         "architecture", check_optional(str), check_optional(str))
     boot_disk = ObjectField.Checked(
-        "boot_disk", check_optional(str), check_optional(str))
+        "boot_disk", check_optional(dict), check_optional(str))
     cpus = ObjectField.Checked(
         "cpu_count", check(int), check(int))
     disable_ipv4 = ObjectField.Checked(
